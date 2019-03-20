@@ -1,3 +1,11 @@
+@import "./node_modules/bootstrap/scss/mixins";
+
+@import "./node_modules/bootstrap/scss/functions";
+
+@import "./node_modules/bootstrap/scss/variables";
+
+
+
 .App {
   text-align: center;
 }
@@ -30,4 +38,7 @@
   to {
     transform: rotate(360deg);
   }
+}
+body{
+  font-size: 16px;
 }

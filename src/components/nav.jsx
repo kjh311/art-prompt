@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './nav.css';
-import './nav.css';
+import './nav.scss';
+// import './nav.css';
 
 export class Nav extends Component {
 	state = {
@@ -13,12 +13,9 @@ export class Nav extends Component {
 
 				<nav className="navbar navbar-expand-lg navbar-light bg-light">
 			    <div className="d-flex flex-grow-1">
-			        <span className="w-100 d-lg-none d-block"></span>
-			        <a className="navbar-brand d-none d-lg-inline-block" href="#">
+			        <a className="navbar-brand  " href="#">
 			            Art Prompt
-			        </a>
-			        <a className="navbar-brand-two mx-auto d-lg-none d-inline-block" href="#">
-			            <img src="//placehold.it/40?text=LOGO" alt="logo" />
+			            <img className="brand-logo-icon" src="../assets/art-icon.png" alt="logo" />
 			        </a>
 			        <div className="w-100 text-right">
 			            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">

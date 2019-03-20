@@ -1,0 +1,22 @@
+@import "../App.scss";
+
+.prompt{
+	/*background: red;*/
+	max-width: 90%;
+}
+.prompt-select select{
+	/*border: 2px solid red;*/
+	padding: 0px 10px;
+	/*text-align: center;*/
+	/*margin: 40px 10px 20px 10px;*/
+	/*width: 200px;*/
+	@include media-breakpoint-up(sm) { 
+      margin: 10px 10%;
+      max-width: 80%;
+    }
+}
+
+.randomize-button{
+	font-size: 1.5em;
+	padding: 10px;
+}

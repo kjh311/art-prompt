@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import './heading.css';
+import './heading.scss';
 // import Nav from './components/nav';
 
 class Heading extends Component {
