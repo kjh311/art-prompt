@@ -44,5 +44,21 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+
+ <!-- FIREBASE    -->
+<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASE_URL,
+    projectId: "art-prompt",
+    storageBucket: "art-prompt.appspot.com",
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
+  };
+  firebase.initializeApp(config);
+</script>
   </body>
 </html>

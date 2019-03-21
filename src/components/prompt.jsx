@@ -51,7 +51,7 @@ class Prompt extends Component {
 	<form className="row">
 			<div className="col-12 prompt-select subjectDropDownDiv">
 				  <div className="form-group">
-				    <label for="subjectDropDown">Subject</label>
+				    <label htmlFor="subjectDropDown">Subject</label>
 				    <select className="form-control " id="subjectDropDown">
 				    	<option>Random</option>
 				    </select>
@@ -60,7 +60,7 @@ class Prompt extends Component {
 
 	  		<div className="col-12 prompt-select verbDropDownDiv">
 				  <div className="form-group">
-				    <label for="verbDropDown">Subject</label>
+				    <label htmlFor="verbDropDown">Subject</label>
 				    <select className="form-control " id="verbDropDown">
 				    	<option>Random</option>
 				    </select>
@@ -70,7 +70,7 @@ class Prompt extends Component {
 	  		<div className="col-12 prompt-select">
 			   
 				  <div className="form-group">
-				    <label for="exampleFormControlSelect3">Object</label>
+				    <label htmlFor="exampleFormControlSelect3">Object</label>
 				    <select className="form-control" id="exampleFormControlSelect3">
 				      <option>Random</option>
 				      <option>an evil elephant.</option>
@@ -85,7 +85,7 @@ class Prompt extends Component {
 	  		<div className="col-12 prompt-select">
 	  		   
 				  <div className="form-group">
-				    <label for="exampleFormControlSelect4">Style</label>
+				    <label htmlFor="exampleFormControlSelect4">Style</label>
 				    <select className="form-control" id="exampleFormControlSelect4">
 				      <option>Random</option>
 				      <option>Drawn with colored pencil</option>
@@ -102,7 +102,7 @@ class Prompt extends Component {
 				    </select>
 				  </div>
 
-				  <button type="button" class="btn btn-primary randomize-button" onClick={this.randomizePrompt}>Randomize</button>
+				  <button type="button" className="btn btn-primary randomize-button" onClick={this.randomizePrompt}>Randomize</button>
 
 				  <h2 id="promptText" className="promptText"></h2>
 				
