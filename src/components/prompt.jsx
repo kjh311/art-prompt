@@ -3,23 +3,58 @@ import React, { Component } from 'react';
 import './prompt.scss';
 // import Nav from './components/nav';
 
+
+
+ 
+
 class Prompt extends Component {
+
+
+
+	handleClick = () => {
+		var myArray = new Array("1", "2", "3", "4", "5");
+
+
+		// Get dropdown element from DOM
+		var dropdown = document.getElementById("selectNumber");
+
+		// Loop through the array
+		for (var i = 0; i < myArray.length; ++i) {
+  		  // Append the element to the end of Array list
+  		  dropdown[dropdown.length] = new Option(myArray[i], myArray[i]);
+		}
+
+		// Get dropdown element from DOM
+// var dropdown = document.getElementById("exampleFormControlSelect1");
+
+// Loop through the array
+// for (var i = 0; i < options.length; ++i) {
+//     // Append the element to the end of Array list
+//     dropdown[dropdown.length] = new Option(options[i], options[i]);
+// }​
+
+
+
+ };
+
   render() {
     return (
       <div className="prompt container">
 
 
-<form className="row">
+	<form className="row">
 			<div className="col-12 prompt-select">
+
+
+
+
 			   
 				  <div className="form-group ">
-				    <label for="exampleFormControlSelect1">Subject</label>
-				    <select className="form-control " id="exampleFormControlSelect1">
-				      <option>Random</option>
-				      <option>A cyborg</option>
-				      <option>A mutant giraffe</option>
-				      <option>An evil villain</option>
-				      <option>A ninja goldfish</option>
+				    <label for="selectNumber">Subject</label>
+				    <select className="form-control " id="selectNumber">
+				    	<option>Choose a number</option>
+
+
 				    </select>
 				  </div>
 				
@@ -75,7 +110,7 @@ class Prompt extends Component {
 				    </select>
 				  </div>
 
-				  <button type="button" class="btn btn-primary randomize-button">Randomize</button>
+				  <button type="button" class="btn btn-primary randomize-button"   onClick={this.handleClick}>Randomize</button>
 				
 	  		</div>
 </form>
