@@ -8,7 +8,7 @@ class Heading extends Component {
     return (
       <div className="heading">
         <h1>Welcome to Art Prompt!</h1> 
-        <h5>Have Art Block? Randomize an art prompt or create your own to get those creative juices flowing.</h5> 
+        <h5>Have Artist Block? Randomize an art prompt or create your own to get those creative juices flowing.</h5> 
       </div>
     );
   }

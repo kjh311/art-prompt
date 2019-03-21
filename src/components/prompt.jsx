@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './prompt.scss';
 // import Nav from './components/nav';
 
@@ -9,33 +8,40 @@ import './prompt.scss';
 
 class Prompt extends Component {
 
+	componentDidMount(){
+     this.populateSubjectDropDown();
+     this.populateVerbDropDown();
+	}
 
+	populateSubjectDropDown = () => {
+		let subjectArray = new Array("A cyborg" , "A dancing chicken ", "A flying whale ", "A rabid chipmunk ", "A tapdancing elephant ");
 
-	handleClick = () => {
-		var myArray = new Array("1", "2", "3", "4", "5");
-
-
-		// Get dropdown element from DOM
-		var dropdown = document.getElementById("selectNumber");
+		let dropdown = document.getElementById("subjectDropDown");
 
 		// Loop through the array
-		for (var i = 0; i < myArray.length; ++i) {
+		for (let i = 0; i < subjectArray.length; ++i) {
   		  // Append the element to the end of Array list
-  		  dropdown[dropdown.length] = new Option(myArray[i], myArray[i]);
+  		  dropdown[dropdown.length] = new Option(subjectArray[i], subjectArray[i]);
 		}
+	 };
 
-		// Get dropdown element from DOM
-// var dropdown = document.getElementById("exampleFormControlSelect1");
+	 populateVerbDropDown = () => {
+		let verbArray = new Array("riding a Harley Davidson ", "weilding a katana sword ", "packing an uzi ", "riding a racing snail ", "walking a crocodile on a leash ");
+		let dropdown = document.getElementById("verbDropDown");
+		for (let i = 0; i < verbArray.length; ++i) {
+  		  dropdown[dropdown.length] = new Option(verbArray[i], verbArray[i]);
+		}
+	 };
 
-// Loop through the array
-// for (var i = 0; i < options.length; ++i) {
-//     // Append the element to the end of Array list
-//     dropdown[dropdown.length] = new Option(options[i], options[i]);
-// }​
+	 randomizePrompt = () => {
+	 	let subjectArray = new Array("A cyborg" , "A dancing chicken ", "A flying whale ", "A rabid chipmunk ", "A tapdancing elephant ");
+	 	let verbArray = new Array("riding a Harley Davidson ", "weilding a katana sword ", "packing an uzi ", "riding a racing snail ", "walking a crocodile on a leash ");
+	 	var randSubject = subjectArray[Math.floor(Math.random() * subjectArray.length)];
+	 	var randVerb = verbArray[Math.floor(Math.random() * verbArray.length)];
+	 	document.getElementById("promptText").innerHTML = randSubject + " " + randVerb;
+	 	// alert(rand)
+	 }
 
-
-
- };
 
   render() {
     return (
@@ -43,36 +49,22 @@ class Prompt extends Component {
 
 
 	<form className="row">
-			<div className="col-12 prompt-select">
-
-
-
-
-			   
-				  <div className="form-group ">
-				    <label for="selectNumber">Subject</label>
-				    <select className="form-control " id="selectNumber">
-				    	<option>Choose a number</option>
-
-
+			<div className="col-12 prompt-select subjectDropDownDiv">
+				  <div className="form-group">
+				    <label for="subjectDropDown">Subject</label>
+				    <select className="form-control " id="subjectDropDown">
+				    	<option>Random</option>
 				    </select>
 				  </div>
-				
 	  		</div>
 
-	  		<div className="col-12 prompt-select">
-			   
+	  		<div className="col-12 prompt-select verbDropDownDiv">
 				  <div className="form-group">
-				    <label for="exampleFormControlSelect2">Verb</label>
-				    <select className="form-control" id="exampleFormControlSelect2">
-				      <option>Random</option>
-				      <option>riding a Harley Davidson away from</option>
-				      <option>shooting a gun at</option>
-				      <option>flying near</option>
-				      <option>weilding a katana sword against</option>
+				    <label for="verbDropDown">Subject</label>
+				    <select className="form-control " id="verbDropDown">
+				    	<option>Random</option>
 				    </select>
 				  </div>
-				
 	  		</div>
 
 	  		<div className="col-12 prompt-select">
@@ -110,7 +102,9 @@ class Prompt extends Component {
 				    </select>
 				  </div>
 
-				  <button type="button" class="btn btn-primary randomize-button"   onClick={this.handleClick}>Randomize</button>
+				  <button type="button" class="btn btn-primary randomize-button" onClick={this.randomizePrompt}>Randomize</button>
+
+				  <h2 id="promptText" className="promptText"></h2>
 				
 	  		</div>
 </form>
