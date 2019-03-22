@@ -11,15 +11,48 @@ class Prompt extends Component {
 
 	constructor(props){
 		super(props);
-		this.promptContent = props.promptContent;
-		this.promptId = props.promptId;
+		this.promptcontent = props.promptcontent;
+		this.promptid = props.promptid;
 
 		this.state = {
-	      prompts: [
-	      	{ id: 1, promptContent: "Prompt 1 here!" },
-	      	{ id: 2, promptContent: "Prompt 2 here!" }
-	      ]
-	    }
+	      subjectPrompts: [
+	      	{ id: 1, promptcontent: "Prompt 1 here!" },
+	      	{ id: 2, promptcontent: "Prompt 2 here!" }
+	      ],
+	      newSubjectContent: '',
+	      
+	    };
+	    this.handleNewSubject = this.handleNewSubject.bind(this);
+	    this.writeSubject = this.writeSubject.bind(this);
+	}
+
+
+
+
+//when the input changes, set new subject content
+	handleNewSubject(e){
+		console.log(this)
+		this.setState({
+			newSubjectContent: e.target.value, //value of text input
+		})
+	}
+
+
+
+	writeSubject(){
+
+		//call a method that sets the promtcontent for a prompt to
+		// the value of the input 
+		
+
+		this.props.addSubject(this.state.newSubjectContent);
+
+		//set newSubjectContent back to empty string
+		this.setState({
+			newSubjectContent: '', 
+		})
+
+		console.log(this.state.newSubjectContent)
 	}
 
 	// componentDidMount(){
@@ -63,16 +96,10 @@ class Prompt extends Component {
 
   render(props) {
 
-
     return (
 
-
-
-
-
-
       <div className="prompt container">
-      <p className="promptContent">{this.promptContent}</p>
+      <p className="promptcontent">{this.promptcontent}</p>
 
 
 	<form className="row">
@@ -82,9 +109,24 @@ class Prompt extends Component {
 
 
 					<select className="form-control " id="subjectDropDown">
-	      			  {this.state.prompts.map((prompt) => <option promptContent={prompt.promptContent} promptId={prompt.id} key={prompt.id}>{prompt.promptContent}</option>)}
+	      			  {
+	      			  	this.state.subjectPrompts.map((prompt) => {
+	      			  		return (
+	      			  	<option promptcontent={prompt.promptcontent} promptid={prompt.id} key={prompt.id}>{prompt.promptcontent}</option>
+	      			  	)
+	      			  })
+	      			  }
 	      			</select>
-      			
+
+	      			<div className="subjectInputDiv">
+	      				<input className="subjectInput"
+	      				placeholder="Add a new subject"
+	      				value={this.state.newSubjectContent} 
+	      				onChange={this.handleNewSubject} />
+	      				<button className="writeSubjectButton"
+	      				onClick={this.writeSubject}>Add Subject</button>
+	      			</div>
+
 				  </div>
 	  		</div>
 
@@ -148,7 +190,7 @@ class Prompt extends Component {
 }
 
 Prompt.propTypes = {
-			promptContent: PropTypes.string
+			promptcontent: PropTypes.string
 		}
 
 export default Prompt;

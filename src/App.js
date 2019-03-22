@@ -11,12 +11,13 @@ import firebase from './Firebase';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.addSubject = this.addSubject.bind(this);
     // this.ref = firebase.firestore().collection('boards');
     // this.unsubscribe = null;
     this.state = {
-      prompts: [
-      	{ id: 1, promptContent: "Prompt 1 here!" },
-      	{ id: 2, promptContent: "Prompt 2 here!" }
+      subjectPrompts: [
+      	{ id: 1, promptcontent: "Prompt 1 here!" },
+      	{ id: 2, promptcontent: "Prompt 2 here!" }
       ]
     }
   }
@@ -104,28 +105,22 @@ class App extends Component {
 
 	 //  }
 
+addSubject(subjectPrompt){
 
+	//push the 
+	const previousSubjectPrompts = this.state.subjectPrompts;
+	previousSubjectPrompts.push({ id: previousSubjectPrompts.length + 1, promptcontent: prompt });
+	this.setState({
+		subjectPrompts: previousSubjectPrompts,
+	})
+}
 
   render() {
     return (
       <div className="App">
       <Nav />
       <Heading />
-
-      {/*<Prompt />*/}
-      <div className="promptBody">	
-{/*      {
-      	this.state.prompts.map((prompt) => {
-      		return (
-			<Prompt promptContent={prompt.promptContent} promptId={prompt.id} key={prompt.id} />
-      		)
-      })
-  }*/}
-
-	<Prompt />       
-
-
-       </div>
+	  <Prompt addSubject={this.addSubject} />       
       </div>
     );
   }
