@@ -11,7 +11,7 @@ import firebase from './Firebase';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.addSubject = this.addSubject.bind(this);
+    // this.addSubject = this.addSubject.bind(this);
     // this.ref = firebase.firestore().collection('boards');
     // this.unsubscribe = null;
     this.state = {
@@ -105,26 +105,29 @@ class App extends Component {
 
 	 //  }
 
-addSubject(subjectPrompt){
-	console.log("addSubject() fired")
+// addSubject(subjectPrompt){
+// 	console.log(this.state.subjectPrompts[2])
+// 	console.log("addSubject() fired")
 
-	//push the 
-	const previousSubjectPrompts = this.state.subjectPrompts;
-	previousSubjectPrompts.push({ id: previousSubjectPrompts.length + 1, promptcontent: prompt });
-	this.setState({
-		subjectPrompts: previousSubjectPrompts,
-	})
+// 	//push the 
+// 	const previousSubjectPrompts = this.state.subjectPrompts;
+// 	previousSubjectPrompts.push({ id: previousSubjectPrompts.length + 1, promptcontent: subjectPrompt });
+// 	this.setState({
+// 		subjectPrompts: previousSubjectPrompts,
+// 	})
 
-		console.log(this.state.subjectPrompts[2])
+// 		console.log(this.state.subjectPrompts[2])
+// 		console.log(previousSubjectPrompts[2])
 
-}
+// }
 
   render() {
     return (
       <div className="App">
       <Nav />
       <Heading />
-	  <Prompt addSubject={this.addSubject} />       
+	  <Prompt  />       
+	  {/*<Prompt addSubject={this.addSubject} />       */}
       </div>
     );
   }

@@ -25,17 +25,37 @@ class Prompt extends Component {
 	    };
 	    this.handleNewSubject = this.handleNewSubject.bind(this);
 	    this.writeSubject = this.writeSubject.bind(this);
+	    this.addSubject = this.addSubject.bind(this);
 	}
 
+
+
+addSubject(subjectPrompt){
+	console.log(this.state.subjectPrompts[2])
+	console.log("addSubject() fired")
+
+	//push the 
+	const previousSubjectPrompts = this.state.subjectPrompts;
+	previousSubjectPrompts.push({ id: previousSubjectPrompts.length + 1, promptcontent: subjectPrompt });
+	this.setState({
+		subjectPrompts: previousSubjectPrompts,
+	})
+
+		console.log(this.state.subjectPrompts[2])
+		console.log(previousSubjectPrompts[2])
+
+}
 
 
 
 //when the input changes, set new subject content
 	handleNewSubject(e){
-		console.log("HandleNewSubject() fired")
+		console.log("HandleNewSubject() fired " + e.target.value)
 		this.setState({
 			newSubjectContent: e.target.value, //value of text input
 		})
+
+		// console.log(this.state.subjectPrompts)
 	}
 
 
@@ -46,7 +66,7 @@ class Prompt extends Component {
 		// the value of the input 
 		
 
-		this.props.addSubject(this.state.newSubjectContent);
+		this.addSubject(this.state.newSubjectContent);
 
 		//set newSubjectContent back to empty string
 		this.setState({
