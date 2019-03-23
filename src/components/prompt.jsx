@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './prompt.scss';
 // import Nav from './components/nav';
 import PropTypes from 'prop-types';
+import App from '../App'
 
 
 
@@ -31,7 +32,7 @@ class Prompt extends Component {
 
 //when the input changes, set new subject content
 	handleNewSubject(e){
-		console.log(this)
+		console.log("HandleNewSubject() fired")
 		this.setState({
 			newSubjectContent: e.target.value, //value of text input
 		})
@@ -40,7 +41,7 @@ class Prompt extends Component {
 
 
 	writeSubject(){
-
+		console.log("writeSubject() fired")
 		//call a method that sets the promtcontent for a prompt to
 		// the value of the input 
 		
@@ -52,7 +53,7 @@ class Prompt extends Component {
 			newSubjectContent: '', 
 		})
 
-		console.log(this.state.newSubjectContent)
+		console.log("newSubjectContent = " + this.state.newSubjectContent)
 	}
 
 	// componentDidMount(){

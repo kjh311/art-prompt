@@ -37,7 +37,7 @@ class App extends Component {
 		// console.log("PRJOJECT ID: " +REACT_APP_PROJECT_ID)
 		// console.log("STORAGE BUCKET: " + REACT_APP_STORAGE_BUCKET)
 		// console.log("SENDER ID: " + REACT_APP_MESSAGING_SENDER_ID)
-		console.log(firebase)
+		// console.log(firebase)
 	
 	}
 
@@ -106,6 +106,7 @@ class App extends Component {
 	 //  }
 
 addSubject(subjectPrompt){
+	console.log("addSubject() fired")
 
 	//push the 
 	const previousSubjectPrompts = this.state.subjectPrompts;
@@ -113,6 +114,9 @@ addSubject(subjectPrompt){
 	this.setState({
 		subjectPrompts: previousSubjectPrompts,
 	})
+
+		console.log(this.state.subjectPrompts[2])
+
 }
 
   render() {
