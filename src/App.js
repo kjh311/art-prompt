@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.scss';
 import Nav from './components/nav';
-import axios from 'axios';
+// import axios from 'axios';
 import Heading from './components/heading';
 import Prompt from './components/prompt';
 // import firebase from 'firebase';
-import firebase from './Firebase';
+
 
 class App extends Component {
   constructor(props) {
@@ -14,18 +14,20 @@ class App extends Component {
     // this.addSubject = this.addSubject.bind(this);
     // this.ref = firebase.firestore().collection('boards');
     // this.unsubscribe = null;
-    this.state = {
-      subjectPrompts: [
-      	{ id: 1, promptcontent: "Prompt 1 here!" },
-      	{ id: 2, promptcontent: "Prompt 2 here!" }
-      ]
-    }
+    // this.state = {
+    //   subjectPrompts: [
+    //   	{ id: 1, promptcontent: "Prompt 1 here!" },
+    //   	{ id: 2, promptcontent: "Prompt 2 here!" }
+    //   ]
+    // }
+
+
   }
 
 	componentWillMount(){
 		// this.getPrompts();
 		// var REACT_APP_API_KEY = process.env.REACT_APP_API_KEY,
-		// MLAB_API_KEY = process.env.REACT_APP_MLAB_API_KEY,
+		// // MLAB_API_KEY = process.env.REACT_APP_MLAB_API_KEY,
 		// REACT_APP_AUTH_DOMAIN = process.env.REACT_APP_AUTH_DOMAIN,       
 		// REACT_APP_DATABASE_URL = process.env.REACT_APP_DATABASE_URL,         
 		// REACT_APP_PROJECT_ID = process.env.REACT_APP_PROJECT_ID,         
@@ -124,9 +126,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Nav />
-      <Heading />
-	  <Prompt  />       
+	      <Nav />
+	      <Heading />
+		  <Prompt  />       
 	  {/*<Prompt addSubject={this.addSubject} />       */}
       </div>
     );

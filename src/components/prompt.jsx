@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import './prompt.scss';
 // import Nav from './components/nav';
 import PropTypes from 'prop-types';
-import App from '../App'
+// import App from '../App'
+import { DB_CONFIG } from '../config';
+import firebase from 'firebase';
+import 'firebase/database';
+
 
 
 
@@ -10,19 +14,29 @@ import App from '../App'
 
 class Prompt extends Component {
 
+
+
 	constructor(props){
 		super(props);
+
 		this.promptcontent = props.promptcontent;
 		this.promptid = props.promptid;
 
+
+
+		this.app = firebase.initializeApp(DB_CONFIG);
+
+
+
+
+
+		this.db = this.app.database().ref().child('subjectPrompts');
+
 		this.state = {
-	      subjectPrompts: [
-	      	{ id: 1, promptcontent: "Prompt 1 here!" },
-	      	{ id: 2, promptcontent: "Prompt 2 here!" }
-	      ],
+	      subjectPrompts: [],
 	      newSubjectContent: '',
-	      
 	    };
+
 	    this.handleNewSubject = this.handleNewSubject.bind(this);
 	    this.writeSubject = this.writeSubject.bind(this);
 	    this.addSubject = this.addSubject.bind(this);
@@ -30,19 +44,44 @@ class Prompt extends Component {
 
 
 
+	//get info from DB
+	componentWillMount(){
+
+		console.log("firebase length " + firebase.apps.length)
+		const previousSubjectPrompts = this.state.subjectPrompts;
+
+	// data snapshot
+		this.db.on('child_added', snap => {
+			previousSubjectPrompts.push({
+				id: snap.key,
+				newSubjectContent: snap.val().newSubjectContent,
+			})
+
+			this.setState({
+				subjectPrompts: previousSubjectPrompts
+			})
+		})
+	}
+
+	// componentDidMount(){
+ //     this.populateSubjectDropDown();
+ //     this.populateVerbDropDown();
+	// }
+
+
+// Add new subject to state
 addSubject(subjectPrompt){
-	console.log(this.state.subjectPrompts[2])
-	console.log("addSubject() fired")
 
-	//push the 
-	const previousSubjectPrompts = this.state.subjectPrompts;
-	previousSubjectPrompts.push({ id: previousSubjectPrompts.length + 1, promptcontent: subjectPrompt });
-	this.setState({
-		subjectPrompts: previousSubjectPrompts,
-	})
 
-		console.log(this.state.subjectPrompts[2])
-		console.log(previousSubjectPrompts[2])
+	// push subject prompt to state
+	// const previousSubjectPrompts = this.state.subjectPrompts;
+	// previousSubjectPrompts.push({ id: previousSubjectPrompts.length + 1, promptcontent: subjectPrompt });
+	// this.setState({
+	// 	subjectPrompts: previousSubjectPrompts,
+	// })
+
+
+	this.db.push().set({ newSubjectContent: subjectPrompt });
 
 }
 
@@ -50,7 +89,7 @@ addSubject(subjectPrompt){
 
 //when the input changes, set new subject content
 	handleNewSubject(e){
-		console.log("HandleNewSubject() fired " + e.target.value)
+		// console.log("HandleNewSubject() fired " + e.target.value)
 		this.setState({
 			newSubjectContent: e.target.value, //value of text input
 		})
@@ -61,7 +100,7 @@ addSubject(subjectPrompt){
 
 
 	writeSubject(){
-		console.log("writeSubject() fired")
+		// console.log("writeSubject() fired")
 		//call a method that sets the promtcontent for a prompt to
 		// the value of the input 
 		
@@ -73,17 +112,10 @@ addSubject(subjectPrompt){
 			newSubjectContent: '', 
 		})
 
-		console.log("newSubjectContent = " + this.state.newSubjectContent)
+		// console.log("newSubjectContent = " + this.state.newSubjectContent)
 	}
 
-	// componentDidMount(){
- //     this.populateSubjectDropDown();
- //     this.populateVerbDropDown();
 
-
-
-
-	// }
 
 	// populateSubjectDropDown = () => {
 	// 	let subjectArray = new Array("A cyborg" , "A dancing chicken ", "A flying whale ", "A rabid chipmunk ", "A tapdancing elephant ");
@@ -153,7 +185,7 @@ addSubject(subjectPrompt){
 
 	  		<div className="col-12 prompt-select verbDropDownDiv">
 				  <div className="form-group">
-				    <label htmlFor="verbDropDown">Subject</label>
+				    <label htmlFor="verbDropDown">Verb</label>
 				    <select className="form-control " id="verbDropDown">
 				    	<option>Random</option>
 				    </select>
