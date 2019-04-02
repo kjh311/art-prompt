@@ -26,12 +26,6 @@ class Prompt extends Component {
 
 		this.app = firebase.initializeApp(DB_CONFIG);
 
-
-
-
-
-		this.db = this.app.database().ref().child('subjectPrompts');
-
 		this.state = {
 	      subjectPrompts: [],
 	      newSubjectContent: '',
@@ -46,6 +40,15 @@ class Prompt extends Component {
 
 	//get info from DB
 	componentWillMount(){
+
+		this.db = this.app.database().ref().child('subjectPrompts');
+		// const db = this.app.database().ref().child('subjectPrompts');
+		// const subject = db.child("subject");
+		// const subjectChild = subject.child("blah");
+
+		// console.log(db)
+		// console.log(subject)
+		// console.log(subjectChild)
 
 		console.log("firebase length " + firebase.apps.length)
 		const previousSubjectPrompts = this.state.subjectPrompts;
@@ -80,6 +83,9 @@ addSubject(subjectPrompt){
 	// 	subjectPrompts: previousSubjectPrompts,
 	// })
 
+	// this.state.subjectPrompts.push(subjectPrompt)
+	// console.log(this.state.subjectPrompts)
+
 
 	this.db.push().set({ newSubjectContent: subjectPrompt });
 
@@ -87,24 +93,20 @@ addSubject(subjectPrompt){
 
 
 
-//when the input changes, set new subject content
+//when the input changes, set newSubjectContent in state
 	handleNewSubject(e){
-		// console.log("HandleNewSubject() fired " + e.target.value)
 		this.setState({
 			newSubjectContent: e.target.value, //value of text input
 		})
 
-		// console.log(this.state.subjectPrompts)
+		// console.log(this.state.newSubjectContent)
+		console.log(this)
 	}
 
 
-
-	writeSubject(){
-		// console.log("writeSubject() fired")
-		//call a method that sets the promtcontent for a prompt to
+	//call a method that sets the promtcontent for a prompt to
 		// the value of the input 
-		
-
+	writeSubject(){
 		this.addSubject(this.state.newSubjectContent);
 
 		//set newSubjectContent back to empty string
